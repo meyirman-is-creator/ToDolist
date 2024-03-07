@@ -1,0 +1,79 @@
+/* Скрытие оригинального чекбокса */
+.custom-checkbox input[type="checkbox"] {
+  visibility: hidden;
+  position: absolute;
+}
+
+/* Стиль для внешнего вида чекбокса */
+.custom-checkbox .checkmark {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 2px solid #AEAEAE;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark:after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 1px;
+  width: 8px;
+  height: 18px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+  background-color: #712fff;
+  border-color: #712fff;
+}
+
+.more{
+    width:28px;
+    height:28px;
+    transition: all .5s;
+    margin-right: 0.75em;
+    border-radius: 4px;
+}
+.more:hover{
+    background-color: #E4E6E7;
+}
+.more img{
+    max-width:100%;
+    max-height:100%;
+    margin: 0 auto;
+    margin-top: 50%;
+    margin-bottom: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+.moves{
+    position: absolute;
+    background: #E4E6E7;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0px 4px 4px 0px #00000029;
+    width: 240px;
+    z-index:1;
+    top: 34px;
+    height: 48px;
+}
+.moves:hover{
+    background: #f3f3f3;
+}
+.moveToTrash{
+    display: flex;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px
+}
+.trashIcon{
+    width: 18px;
+    height: 18px;
+    margin-right: 15px;
+}
