@@ -53,7 +53,7 @@ export default function EventModal() {
   const modalStyle = {
     left: `${position.x}px`,
     top: `${position.y}px`,
-    zIndex:'1'
+    zIndex:'2 '
   };
 
   const onMouseMove = (e) => {

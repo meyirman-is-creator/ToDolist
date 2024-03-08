@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../context/GlobalContext";
+import deleteIcon from "../assets/trash.svg";
 
 export default function Day({ day, rowIdx }) {
   const [dayEvents, setDayEvents] = useState([]);
@@ -14,7 +15,16 @@ export default function Day({ day, rowIdx }) {
     setShowModalList,
     dispatchCalEvent,
   } = useContext(GlobalContext);
-  function toggleTaskDone(task){
+  function countTasks(array){
+    let count = 0;
+    array.map(item=>{
+      if(!item.trash) count++;
+    });
+    return count;
+  }
+
+  function toggleTaskDone(e,type, task) {
+    e.stopPropagation();
     setShowEventModal(false);
     const item = {
       title: task.title,
@@ -22,11 +32,16 @@ export default function Day({ day, rowIdx }) {
       selectedLabel: task.selectedLabel,
       day: task.day,
       id: task.id,
-      done: !task.done,
-      trash: task.trash,
     };
+    if (type === "done") {
+      item.done = !task.done;
+      item.trash = task.trash;
+    } else if (type === "trash") {
+      item.done = task.done;
+      item.trash = !task.trash;
+    }
     dispatchCalEvent({ type: "update", payload: item });
-  };
+  }
   function getCurrentDayClass() {
     return day.format("DD-MM-YY") === dayjs().format("DD-MM-YY")
       ? "bg-blue-600 text-while rounded-full w-7 text-white"
@@ -39,13 +54,15 @@ export default function Day({ day, rowIdx }) {
     );
     setDayEvents(events);
   }, [filteredEvents, day]);
+  let count=0;
   return (
     <div
       onClick={() => {
         setDaySelected(day);
         setShowEventModal(true);
       }}
-      className="border border-gray-200 flex flex-col cursor-pointer"
+      className=" flex flex-col cursor-pointer"
+      style={{border:'1px solid #cdcdcd'}}
     >
       <header className="flex flex-col items-center">
         {rowIdx === 0 && <p>{day.format("ddd").toUpperCase()}</p>}
@@ -55,7 +72,8 @@ export default function Day({ day, rowIdx }) {
       </header>
       <div className="flex-1 cursor-pointer">
         {dayEvents.map((evt, idx) => {
-          if (idx < 3) {
+          if (count < 3 && !evt.trash) {
+            count++;
             return (
               <div className="flex">
                 <div
@@ -67,13 +85,22 @@ export default function Day({ day, rowIdx }) {
                     width: "100%",
                     textDecoration: `${evt.done ? "line-through" : ""}`,
                   }}
-                  className={`mr-1 p-1 ml-3 text-white text-sm rounded mb-1 truncate ${evt.selectedLabel}`}
+                  className={`flex justify-between mr-1 p-1 ml-3 text-white text-sm rounded mb-1 truncate ${evt.selectedLabel}`}
                 >
                   {evt.title}
+                  <img
+                    onClick={(e) => {
+                      toggleTaskDone(e,'trash',evt)
+                    }}
+                    className="mr-2"
+                    src={deleteIcon}
+                    alt=""
+                    style={{ width: "20px", height: "20px" }}
+                  />
                 </div>
                 <label className="custom-checkbox mr-3">
                   <input
-                    onChange={(e) => toggleTaskDone(evt)}
+                    onChange={(e) => toggleTaskDone(e,"done", evt)}
                     type="checkbox"
                     checked={evt.done}
                     hidden
@@ -84,7 +111,7 @@ export default function Day({ day, rowIdx }) {
             );
           }
         })}
-        {dayEvents.length > 3 && (
+        {countTasks(dayEvents)> 3 &&  (
           <div
             className="text-black p-1  mr-3 ml-3 text-sm rounded mb-1 truncate bg-gray-200"
             onClick={(e) => {
@@ -93,7 +120,7 @@ export default function Day({ day, rowIdx }) {
               setShowModalList(true);
             }}
           >
-            more {dayEvents.length - 3}
+            more {countTasks(dayEvents) - 3}
           </div>
         )}
       </div>

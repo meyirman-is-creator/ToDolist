@@ -19,18 +19,23 @@ export default function ModalList() {
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
   const [selectedTrashId, setSelectedTrashId] = useState(null);
 
-  function toggleTaskDone(task){
+  function toggleTaskDone(type, task) {
     const item = {
       title: task.title,
       description: task.description,
       selectedLabel: task.selectedLabel,
       day: task.day,
       id: task.id,
-      done: !task.done,
-      trash: task.trash,
     };
+    if (type === "done") {
+      item.done = !task.done;
+      item.trash = task.trash;
+    } else if (type === "trash") {
+      item.done = task.done;
+      item.trash = !task.trash;
+    }
     dispatchCalEvent({ type: "update", payload: item });
-  };
+  }
   const openTrashModal = (item) => {
     setSelectedTrashId((prev) => (prev === item.id ? "null" : item.id));
   };
@@ -45,7 +50,7 @@ export default function ModalList() {
   const modalStyle = {
     left: `${position.x}px`,
     top: `${position.y}px`,
-    zIndex:'1',
+    zIndex: "1",
   };
 
   const onMouseMove = (e) => {
@@ -110,7 +115,7 @@ export default function ModalList() {
                     </div>
                     <label className="custom-checkbox">
                       <input
-                        onChange={() => toggleTaskDone(item)}
+                        onChange={() => toggleTaskDone("done", item)}
                         type="checkbox"
                         checked={item.done}
                         hidden
@@ -132,7 +137,10 @@ export default function ModalList() {
                     </div>
                     {selectedTrashId === item.id && (
                       <div className="moves">
-                        <div className="moveToTrash">
+                        <div
+                          className="moveToTrash"
+                          onClick={() => toggleTaskDone("trash", item)}
+                        >
                           <img className="trashIcon" src={deleteIcon} />
                           <span>Move to Trash</span>
                         </div>

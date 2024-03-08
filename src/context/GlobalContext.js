@@ -19,5 +19,7 @@ const GlobalContext=React.createContext({
     filteredEvents:[],
     showModalList: false,
     setShowModalList:()=>{},
+    switchWindow:'list',
+    setSwitchWindow:()=>{},
 }); 
 export default GlobalContext;

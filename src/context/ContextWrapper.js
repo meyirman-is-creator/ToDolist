@@ -13,14 +13,6 @@ function savedEventsReducer(state, { type, payload }) {
       throw new Error();
   }
 }
-// function changeStatus(state, {type, payload}){
-//   switch(type){
-//     case 'done':
-//       return state.map((item)=>{
-
-//       });
-//   }
-// }
 function initEvents() {
   const storageEvents = localStorage.getItem("savedEvents");
   const parsedEvents = storageEvents ? JSON.parse(storageEvents) : [];
@@ -34,7 +26,7 @@ export default function ContextWrapper(props) {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [labels, setLabels] = useState([]);
   const [showModalList, setShowModalList] = useState(false);
-
+  const [switchWindow, setSwitchWindow] = useState('list');
   const [savedEvents, dispatchCalEvent] = useReducer(
     savedEventsReducer,
     [],
@@ -100,6 +92,8 @@ export default function ContextWrapper(props) {
           filteredEvents,
           showModalList,
           setShowModalList,
+          switchWindow,
+          setSwitchWindow,
         }}
       >
         {props.children}
