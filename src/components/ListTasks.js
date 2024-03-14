@@ -33,6 +33,7 @@ export default function ListTasks() {
       item.done = task.done;
       item.trash = !task.trash;
     }
+    setSelectedTrashId('null');
     dispatchCalEvent({ type: "update", payload: item });
   }
   return (
