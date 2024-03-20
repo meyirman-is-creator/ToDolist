@@ -27,8 +27,6 @@ ToDoList is a React-based task management application designed to streamline tas
 
 To get the project up and running on your local machine, follow these steps:
 
-## installation
-
 git clone https://github.com/meyirman-is-creator/ToDolist.git
 cd ToDolist
 npm install
