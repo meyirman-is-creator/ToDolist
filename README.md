@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# ToDoList
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+ToDoList is a React-based task management application designed to streamline task organization and scheduling. Incorporating an intuitive user interface built with Tailwind CSS, it features an integrated calendar similar to Google Calendar for precise task scheduling. React Hooks (useState, useEffect, useContext, useMemo) are utilized for efficient state management and performance optimization. The application supports adding, managing, and deleting tasks with detailed inputs through modal windows.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Responsive Design**: Optimized for a seamless experience across all devices.
+- **Integrated Calendar**: For detailed task scheduling, akin to Google Calendar.
+- **React Hooks**: Used for state management and optimizing re-renders.
+- **Modal Task Entry**: Enables detailed task specifications including title, description, and deadline.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- HTML
+- Tailwind CSS
+- JavaScript
+- React
 
-### `npm test`
+## Preview & Resources
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Live Demo**: [ToDoList](https://todolist-d4337.web.app)
+- **Design (Figma)**: [Figma Designs](https://www.figma.com/file/180ynJWw5NE0nlxKNgbldX/nFactorial-projects-design?type=design&node-id=0-1&mode=design&t=1IzlNh9XctjCrEjj-0)
 
-### `npm run build`
+## Setup and Launch
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To get the project up and running on your local machine, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+git clone https://github.com/meyirman-is-creator/ToDolist.git
+cd ToDolist
+npm install
+npm start
 
-### `npm run eject`
+This will open the application in your default web browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contribution
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contributions are welcome! If you're interested in enhancing the application, please fork the repository and submit a pull request with your changes. For significant modifications, kindly open an issue first to discuss what you'd like to change.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is open-sourced under the MIT License.
